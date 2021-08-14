@@ -24,8 +24,8 @@ async def nursery_rhyme(ctx):
     await ctx.message.channel.send("Once I caught a fish alive!")
 
 @client.command(help="Gives a random number")
-async def rng(ctx, a, b):
-    number = random.randint(int(a), int(b))
+async def rng(ctx, a: int, b: int):
+    number = random.randint(a, b)
     await ctx.send(number)
 
 client.run(os.environ["BOT_TOKEN"])
