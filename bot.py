@@ -17,7 +17,9 @@ async def on_message(message):
     if message.author == client.user:
         return
     await message.channel.send("Got a message!")
-    if message.content == "12345!":
-        await message.channel.send("Once I caught a fish alive!")
+
+@client.command(name="12345")
+async def nursery_rhyme(ctx):
+    await ctx.message.channel.send("Once I caught a fish alive!")
 
 client.run(os.environ["BOT_TOKEN"])
