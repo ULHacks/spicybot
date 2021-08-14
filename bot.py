@@ -2,16 +2,17 @@ import os
 
 import dotenv
 import discord
+import discord.ext.commands as commands
 
 dotenv.load_dotenv()
 
-client = discord.Client()
+client = commands.Bot(command_prefix="!")
 
-@client.event
+@client.listen()
 async def on_ready():
     print(f"Bot logged in as {client.user.name}")
 
-@client.event
+@client.listen()
 async def on_message(message):
     if message.author == client.user:
         return
