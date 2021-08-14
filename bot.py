@@ -1,5 +1,6 @@
 import os
 import random
+import asyncio
 
 import dotenv
 import discord
@@ -27,5 +28,11 @@ async def nursery_rhyme(ctx):
 async def rng(ctx, a: int, b: int):
     number = random.randint(a, b)
     await ctx.send(number)
+
+@client.command(help="Pings a user multiple times with the given message")
+async def chant(ctx, member: discord.Member, *, text):
+    for _ in range(3):
+        await ctx.send(f"{member.mention}: {text}")
+        await asyncio.sleep(3)
 
 client.run(os.environ["BOT_TOKEN"])
